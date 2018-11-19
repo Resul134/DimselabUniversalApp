@@ -22,6 +22,9 @@ namespace DimselabUniversalApp
         private RelayCommand _removeMemberCommand;
         private RelayCommand _addItemCommand;
         private RelayCommand _removeItemCommand;
+        private string _itemName;
+        private string _itemID;
+        private string _itemReturnDate;
         private string _projectTitle; 
         private string _memberName;
         private string _memberClass;
