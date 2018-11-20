@@ -15,13 +15,18 @@ namespace DimselabUniversalApp
     class ViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Project> _projects;
+
         private Project _selectedProject;
+        private Member _selectedMember;
+        private Item _selectedItem;
+
         private RelayCommand _addProjectCommand;
         private RelayCommand _removeProjectCommand;
         private RelayCommand _addMemberCommand;
         private RelayCommand _removeMemberCommand;
         private RelayCommand _addItemCommand;
         private RelayCommand _removeItemCommand;
+
         private string _itemName;
         private string _itemID;
         private string _itemReturnDate;
@@ -45,8 +50,12 @@ namespace DimselabUniversalApp
 
             AddProjectCommand = new RelayCommand(AddProject);
             RemoveProjectCommand = new RelayCommand(RemoveProject);
+            AddMemberCommand = new RelayCommand(AddMember);
+            RemoveMemberCommand = new RelayCommand(RemoveMember);
+            //AddItemCommand = new RelayCommand();
         }
 
+        #region selected things
         public Project SelectedProject
         {
             get { return _selectedProject; }
@@ -56,7 +65,29 @@ namespace DimselabUniversalApp
                 OnPropertyChanged();
             }
         }
+        public Member SelectedMember
+        {
+            get { return _selectedMember; }
+            set
+            {
+                _selectedMember = value;
+                OnPropertyChanged();
+            }
+        }
+        public Item SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+            }
+        }
 
+
+        #endregion
+
+        #region RelayCommands
         public RelayCommand AddProjectCommand
         {
             get { return _addProjectCommand; }
@@ -66,15 +97,83 @@ namespace DimselabUniversalApp
                 OnPropertyChanged();
             }
         }
+        public RelayCommand RemoveProjectCommand
+        {
+            get { return _removeProjectCommand; }
+            set
+            {
+                _removeProjectCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelayCommand AddMemberCommand
+        {
+            get { return _addMemberCommand; }
+            set
+            {
+                _addMemberCommand = value; 
+                OnPropertyChanged();
+            }
+        }
+        public RelayCommand RemoveMemberCommand
+        {
+            get { return _removeMemberCommand; }
+            set
+            {
+                _removeMemberCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelayCommand AddItemCommand
+        {
+            get { return _addItemCommand; }
+            set
+            {
+                _addItemCommand = value; 
+                OnPropertyChanged();
+            }
+        }
+        public RelayCommand RemoveItemCommand
+        {
+            get { return _removeItemCommand; }
+            set
+            {
+                _removeItemCommand = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        
+
+        #endregion
 
         private void AddProject()
         {
             _projects.Add(new Project(_projectTitle));
         }
-
         private void RemoveProject()
         {
             _projects.Remove(_selectedProject);
+        }
+
+        private void AddMember()
+        {
+            _selectedProject.Members.Add(new Member(_memberName, _memberClass));
+        }
+        private void RemoveMember()
+        {
+            _selectedProject.Members.Remove(_selectedMember);
+        }
+
+        private void AddItem()
+        {
+            _selectedProject.Items.Add(new Item(_itemName, _itemID, _itemReturnDate));
+        }
+        private void RemoveItem()
+        {
+            _selectedProject.Members.Remove(_selectedMember);
         }
 
         public ObservableCollection<Project> Projects
@@ -88,52 +187,32 @@ namespace DimselabUniversalApp
             get { return _projectTitle; }
             set { _projectTitle = value; }
         }
-
-        public RelayCommand RemoveProjectCommand
-        {
-            get { return _removeProjectCommand; }
-            set
-            {
-                _removeProjectCommand = value; 
-                OnPropertyChanged();
-            }
-        }
-
         public string MemberName
         {
             get { return _memberName; }
             set { _memberName = value; }
         }
-
         public string MemberClass
         {
             get { return _memberClass; }
             set { _memberClass = value; }
         }
-
-        public RelayCommand AddMemberCommand
+        public string ItemName
         {
-            get { return _addMemberCommand; }
-            set { _addMemberCommand = value; }
+            get { return _itemName; }
+            set { _itemName = value; }
+        }
+        public string ItemId
+        {
+            get { return _itemID; }
+            set { _itemID = value; }
+        }
+        public string ItemReturnDate
+        {
+            get { return _itemReturnDate; }
+            set { _itemReturnDate = value; }
         }
 
-        public RelayCommand RemoveMemberCommand
-        {
-            get { return _removeMemberCommand; }
-            set { _removeMemberCommand = value; }
-        }
-
-        public RelayCommand AddItemCommand
-        {
-            get { return _addItemCommand; }
-            set { _addItemCommand = value; }
-        }
-
-        public RelayCommand RemoveItemCommand
-        {
-            get { return _removeItemCommand; }
-            set { _removeItemCommand = value; }
-        }
 
         #region MyRegion
         public event PropertyChangedEventHandler PropertyChanged;
