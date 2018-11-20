@@ -32,7 +32,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ListView Grid.Row="0" ItemsSource="{Binding SelectedProject.Members}" FontSize="48"/>
+                    <ListView Grid.Row="0" ItemsSource="{Binding SelectedProject.Members}" SelectedItem="{Binding SelectedMember, Mode=TwoWay}" FontSize="48"/>
 
                     <TextBlock Grid.Row="1" Text="Member name: " Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
                     <TextBlock Grid.Row="1" Text="Member class: " Margin="10,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -40,8 +40,8 @@
                     <TextBox Grid.Row="1" Text="{Binding MemberName, Mode=TwoWay}" Margin="120,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
                     <TextBox Grid.Row="1" Text="{Binding MemberClass, Mode=TwoWay}" Margin="120,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
 
-                    <Button Grid.Row="1" Command="{Binding AddProjectCommand}" Content="Add Member" Width="130" Margin="325,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Button Grid.Row="1" Command="{Binding RemoveProjectCommand}" Content="Remove Remove" Width="130" Margin="325,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Button Grid.Row="1" Command="{Binding AddMemberCommand}" Content="Add Member" Width="130" Margin="325,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Button Grid.Row="1" Command="{Binding RemoveMemberCommand}" Content="Remove Member" Width="130" Margin="325,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
                 </Grid>
             </PivotItem>
@@ -51,7 +51,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ListView Grid.Row="0" ItemsSource="{Binding SelectedProject.Items}" FontSize="48"/>
+                    <ListView Grid.Row="0" ItemsSource="{Binding SelectedProject.Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" FontSize="48"/>
 
                     <TextBlock Grid.Row="1" Text="Item name: " Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
                     <TextBlock Grid.Row="1" Text="Item ID: " Margin="10,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -61,8 +61,8 @@
                     <TextBox Grid.Row="1" Text="{Binding ItemId, Mode=TwoWay}" Margin="120,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
                     <TextBox Grid.Row="1" Text="{Binding ItemReturnDate, Mode=TwoWay}" Margin="120,87,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
 
-                    <Button Grid.Row="1" Command="{Binding AddItemCommand}" Content="Add Member" Width="130" Margin="325,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Button Grid.Row="1" Command="{Binding RemoveItemCommand}" Content="Remove Remove" Width="130" Margin="325,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Button Grid.Row="1" Command="{Binding AddItemCommand}" Content="Add Item" Width="130" Margin="325,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Button Grid.Row="1" Command="{Binding RemoveItemCommand}" Content="Remove Item" Width="130" Margin="325,47,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 </Grid>
             </PivotItem>
         </Pivot>

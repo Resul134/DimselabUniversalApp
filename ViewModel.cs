@@ -52,7 +52,8 @@ namespace DimselabUniversalApp
             RemoveProjectCommand = new RelayCommand(RemoveProject);
             AddMemberCommand = new RelayCommand(AddMember);
             RemoveMemberCommand = new RelayCommand(RemoveMember);
-            //AddItemCommand = new RelayCommand();
+            AddItemCommand = new RelayCommand(AddItem);
+            RemoveItemCommand = new RelayCommand(RemoveItem);
         }
 
         #region selected things
@@ -169,11 +170,12 @@ namespace DimselabUniversalApp
 
         private void AddItem()
         {
-            _selectedProject.Items.Add(new Item(_itemName, _itemID, _itemReturnDate));
+            //TODO fix this so _itemId is a int
+            _selectedProject.Items.Add(new Item(_itemName, Convert.ToInt32(_itemID), _itemReturnDate));
         }
         private void RemoveItem()
         {
-            _selectedProject.Members.Remove(_selectedMember);
+            _selectedProject.Items.Remove(_selectedItem);
         }
 
         public ObservableCollection<Project> Projects
@@ -182,6 +184,7 @@ namespace DimselabUniversalApp
             set { _projects = value; }
         }
 
+        #region Properties
         public string ProjectTitle
         {
             get { return _projectTitle; }
@@ -212,9 +215,9 @@ namespace DimselabUniversalApp
             get { return _itemReturnDate; }
             set { _itemReturnDate = value; }
         }
+        #endregion
 
-
-        #region MyRegion
+        #region OnPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

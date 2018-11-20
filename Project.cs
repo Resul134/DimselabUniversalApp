@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,8 +13,8 @@ namespace DimselabUniversalApp
     class Project
     {
         private string _title;
-        private List<Member> _members = new List<Member>();
-        private List<Item> _items = new List<Item>();
+        private ObservableCollection<Member> _members = new ObservableCollection<Member>();
+        private ObservableCollection<Item> _items = new ObservableCollection<Item>();
 
         public Project(string title)
         {
@@ -29,7 +30,7 @@ namespace DimselabUniversalApp
             }
         }
 
-        public List<Member> Members
+        public ObservableCollection<Member> Members
         {
             get { return _members; }
             set
@@ -38,7 +39,7 @@ namespace DimselabUniversalApp
             }
         }
 
-        public List<Item> Items
+        public ObservableCollection<Item> Items
         {
             get { return _items; }
             set
