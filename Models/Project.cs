@@ -24,28 +24,19 @@ namespace DimselabUniversalApp
         public string Title
         {
             get { return _title; }
-            set
-            {
-                _title = value; 
-            }
+            set { _title = value; }
         }
 
         public ObservableCollection<Member> Members
         {
             get { return _members; }
-            set
-            {
-                _members = value;
-            }
+            set { _members = value; }
         }
 
         public ObservableCollection<Item> Items
         {
             get { return _items; }
-            set
-            {
-                _items = value; 
-            }
+            set { _items = value; }
         }
 
         public void AddItem()
